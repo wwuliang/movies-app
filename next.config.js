@@ -10,4 +10,8 @@ module.exports = {
     // Will be available on both server and client
     apiKey: process.env.API_KEY,
   },
+
+  images: {
+    domains: ['image.tmdb.org'], // Add 'image.tmdb.org' to the list of allowed image domains
+  },
 }
