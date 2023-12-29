@@ -24,13 +24,12 @@ a {
 }
 
 .title {
-  color: black; /* Set the text color to black */
+  color: black;
   text-align: center;
   margin-top: 1rem;
   z-index: 10;
   position: relative;
-  /* Add white drop shadow */
-  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5); /* White shadow with 50% opacity */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
 }
 
 .movie {
