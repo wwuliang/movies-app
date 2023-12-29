@@ -2,6 +2,8 @@ import Head from 'next/head';
 import getConfig from 'next/config';
 import Movie from '@/src/components/Movie'
 import { useState, useEffect } from 'react';
+import { Button, Container, Row, Col } from 'react-bootstrap';
+import { IoSearch } from "react-icons/io5";
 
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
@@ -33,18 +35,20 @@ export default function Home({trendingMovies}) {
   return (
     <div className="container">
       <Head>
-        <h1>Movies App</h1>
+        <h1 className="title">Movies App</h1>
           <link rel="icon" href="/favicon.ico"/>
           <link rel="stylesheet" href="/styles.css"/>
       </Head>
-      <div>
-          <form onSubmit={search}>
-            <input className="search" name="searchTerm" value={searchTerm} onChange={handleInput} type="text" required />
-            <button className="btn-search">
-              Search
+      <Row>
+        <Col md={6} className="m-auto">
+          <form className="search-form" onSubmit={search}>
+            <input className="search-input" name="searchTerm" value={searchTerm} onChange={handleInput} type="text" required />
+            <button className="btn-search" type="submit">
+              <IoSearch className="search-icon" aria-label="Search"/> 
             </button>
           </form>
-      </div>
+        </Col>
+      </Row>
       <div className="movie-search-results-grid">
         {searchResults.map((each, index) => {
           return (
