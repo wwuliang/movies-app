@@ -33,35 +33,41 @@ export default function Home({trendingMovies}) {
   }
 
   return (
-    <div className="container">
-      <Head>
-        <h1 className="title">Movies App</h1>
+    <>
+      <div className="red-background"></div>
+      <div className="container">
+        <Head>
+          <title>Movies App</title>
           <link rel="icon" href="/favicon.ico"/>
           <link rel="stylesheet" href="/styles.css"/>
-      </Head>
-      <Row>
-        <Col md={6} className="m-auto">
-          <form className="search-form" onSubmit={search}>
-            <input className="search-input" name="searchTerm" value={searchTerm} onChange={handleInput} type="text" required />
-            <button className="btn-search" type="submit">
-              <IoSearch className="search-icon" aria-label="Search"/> 
-            </button>
-          </form>
-        </Col>
-      </Row>
-      <div className="movie-search-results-grid">
-        {searchResults.map((each, index) => {
-          return (
-            <Movie 
-              index={each.id} 
-              title={each.title} 
-              poster_path={each.poster_path} 
-              overview={each.overview}
-            />
-          )
-        })}
+        </Head>
+        <h1 className="title">Movies App</h1>
+        <Row>
+          <Col md={6} className="m-auto">
+            <form className="search-form" onSubmit={search}>
+              <input className="search-input" name="searchTerm" value={searchTerm} onChange={handleInput} type="text" required />
+              <button className="btn-search" type="submit">
+                <IoSearch className="search-icon" aria-label="Search"/> 
+              </button>
+            </form>
+          </Col>
+        </Row>
+        <Container>
+          <div className="movie-search-results-grid">
+            {searchResults.map((each, index) => {
+              return (
+                <Movie 
+                  index={each.id} 
+                  title={each.title} 
+                  poster_path={each.poster_path} 
+                  overview={each.overview}
+                />
+              )
+            })}
+          </div>
+        </Container>
       </div>
-    </div>
+    </>
   )
 }
 
