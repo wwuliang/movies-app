@@ -24,12 +24,15 @@ a {
 }
 
 .title {
-  color: #221F1F;
-  text-align: center; /* Center the text horizontally */
-  margin-top: 1rem; /* Add some space on the top, adjust as needed */
-  z-index: 10; /* Ensure it's above other elements */
-  position: relative; /* Position it relative to its normal position */
+  color: #F5F5F1;
+  text-align: center;
+  margin-top: 1rem;
+  z-index: 10;
+  position: relative;
+  /* Add drop shadow */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 }
+
 
 .movie {
   width: 200px;
