@@ -5,14 +5,17 @@ import { useState, useEffect } from 'react';
 
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
-export default function Home(initialData) {
+export default function Home({trendingMovies}) {
   const [ searchResults, setSearchResults ] = useState([]);
   const [ formInput, setFormInput ] = useState({});
   const [ searchTerm, setSearchTerm ] = useState('');
 
   useEffect(() => {
-    setSearchResults(initialData.trendingMovies.results);
-  }, [initialData]);
+    if (trendingMovies && trendingMovies.results) {
+      setSearchResults(trendingMovies.results);
+    }
+  }, [trendingMovies]);
+  
 
   const handleInput = (event) => {
     let {name, value} = event.target;
@@ -22,13 +25,13 @@ export default function Home(initialData) {
 
   const search = async (event) => {
     event.preventDefault();
-    let movies = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&query=${formInput.searchTerm}&page-1&include_adult=false`);
+    let movies = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${publicRuntimeConfig.apiKey}&language=en-US&query=${encodeURIComponent(formInput.searchTerm)}&page=1&include_adult=false`);
     movies = await movies.json();
     setSearchResults(movies.results);
   }
 
   return (
-    <div className="containter">
+    <div className="container">
       <Head>
         <h1>Movies App</h1>
           <link rel="icon" href="/favicon.ico"/>
