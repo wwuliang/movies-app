@@ -38,8 +38,6 @@ export default function Home({trendingMovies}) {
       <div className="container">
         <Head>
           <title>Movies App</title>
-          <link rel="icon" href="/favicon.ico"/>
-          <link rel="stylesheet" href="/styles.css"/>
         </Head>
         <h1 className="title">Movies App</h1>
         <Row>
@@ -53,18 +51,19 @@ export default function Home({trendingMovies}) {
           </Col>
         </Row>
         <Container>
-          <div className="movie-search-results-grid">
-            {searchResults.map((each, index) => {
-              return (
-                <Movie 
-                  index={each.id} 
-                  title={each.title} 
-                  poster_path={each.poster_path} 
-                  overview={each.overview}
-                />
-              )
-            })}
-          </div>
+        <div className="movie-search-results-grid">
+          {searchResults.map((each) => {
+            return (
+              <Movie 
+                key={each.id} // Add the unique key prop here
+                index={each.id} 
+                title={each.title} 
+                poster_path={each.poster_path} 
+                overview={each.overview}
+              />
+            )
+          })}
+        </div>
         </Container>
       </div>
     </>
